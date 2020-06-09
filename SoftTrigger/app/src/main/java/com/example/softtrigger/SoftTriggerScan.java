@@ -23,6 +23,7 @@ public class SoftTriggerScan extends Service {
     private static final String DATAWEDGE_EXTRA_KEY_SCANNER_TRIGGER_CONTROL = "com.symbol.datawedge.api.SOFT_SCAN_TRIGGER";
     private static final String DATAWEDGE_EXTRA_VALUE_TOGGLE_SCANNER = "START_SCANNING";
     public int counter=0;
+    private Intent intent;
 
     @Override
     public void onCreate() {
@@ -76,7 +77,7 @@ public class SoftTriggerScan extends Service {
         this.sendBroadcast(broadcastIntent);
     }
 
-//    @Nullable
+    @Nullable
 //    @Override
 //    public IBinder onBind(Intent intent) {
 //        return null;
@@ -92,7 +93,7 @@ public class SoftTriggerScan extends Service {
 //                Log.i("Count", "=========  "+ (counter++));
 //            }
 //        };
-//        timer.schedule(timerTask, 1000, 1000); 
+//        timer.schedule(timerTask, 1000, 1000);
         Intent intent = new Intent();
         intent.setAction(DATAWEDGE_ACTION);
         intent.putExtra(DATAWEDGE_EXTRA_KEY_SCANNER_TRIGGER_CONTROL, DATAWEDGE_EXTRA_VALUE_TOGGLE_SCANNER);
@@ -105,6 +106,7 @@ public class SoftTriggerScan extends Service {
             timer = null;
         }
     }
+
 
     @Nullable
     @Override
